@@ -1,0 +1,13 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "graphTooltip": 1,
+  "panels": [
+    {"type":"stat","title":"Month-to-date estimated cost (USD)","id":1,"gridPos":{"h":5,"w":6,"x":0,"y":0},"datasource":{"type":"prometheus","uid":"${DS_PROMETHEUS}"},"targets":[{"expr":"finops_month_to_date_cost_usd","refId":"A"}],"fieldConfig":{"defaults":{"unit":"currencyUSD","color":{"mode":"palette-classic"}},"overrides":[]}},
+    {"type":"stat","title":"Monthly budget (USD)","id":2,"gridPos":{"h":5,"w":6,"x":6,"y":0},"datasource":{"type":"prometheus","uid":"${DS_PROMETHEUS}"},"targets":[{"expr":"finops_monthly_budget_usd","refId":"A"}],"fieldConfig":{"defaults":{"unit":"currencyUSD"},"overrides":[]}},
+    {"type":"gauge","title":"Budget utilization", "id":3,"gridPos":{"h":5,"w":6,"x":12,"y":0},"datasource":{"type":"prometheus","uid":"${DS_PROMETHEUS}"},"targets":[{"expr":"finops_budget_utilization_percent","refId":"A"}],"fieldConfig":{"defaults":{"unit":"percent","min":0,"max":100,"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"yellow","value":70},{"color":"red","value":90}]}},"overrides":[]}},
+    {"type":"stat","title":"Services flagged for review","id":4,"gridPos":{"h":5,"w":6,"x":18,"y":0},"datasource":{"type":"prometheus","uid":"${DS_PROMETHEUS}"},"targets":[{"expr":"finops_risk_services","refId":"A"}],"fieldConfig":{"defaults":{"color":{"mode":"thresholds"},"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"orange","value":1},{"color":"red","value":3}]}},"overrides":[]}},
+    {"type":"timeseries","title":"Cost and budget trend (metrics refresh every 15s)","id":5,"gridPos":{"h":8,"w":24,"x":0,"y":5},"datasource":{"type":"prometheus","uid":"${DS_PROMETHEUS}"},"targets":[{"expr":"finops_month_to_date_cost_usd","legendFormat":"Month-to-date cost","refId":"A"},{"expr":"finops_monthly_budget_usd","legendFormat":"Monthly budget","refId":"B"}],"fieldConfig":{"defaults":{"unit":"currencyUSD"},"overrides":[]}}
+  ],
+  "refresh":"15s","schemaVersion":39,"tags":["finops","cloud-cost"],"templating":{"list":[{"name":"DS_PROMETHEUS","type":"datasource","query":"prometheus","current":{"text":"FinOps Prometheus","value":"P8E80F9AEF21F6940"}}]},"time":{"from":"now-24h","to":"now"},"title":"FinOps Cloud Cost Overview","uid":"finops-cloud-cost","version":1
+}

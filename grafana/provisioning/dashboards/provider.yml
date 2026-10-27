@@ -1,0 +1,10 @@
+apiVersion: 1
+providers:
+  - name: FinOps dashboards
+    orgId: 1
+    folder: FinOps
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards
